@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Abrangente de HTML e CSS</title>
+    <style>
+        /* Reset básico e tipografia */
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #007bff;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+            --code-bg-color: #e9ecef;
+            --border-color: #dee2e6;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #6daee3;
+                --secondary-color: #8bb3e1;
+                --text-color: #e0e0e0;
+                --bg-color: #2c2c2c;
+                --code-bg-color: #444;
+                --border-color: #555;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: flex;
+            flex-wrap: wrap; /* Permite que os itens quebrem em telas menores */
+            gap: 20px;
+        }
+
+        /* Layout responsivo com navegação lateral */
+        nav.sidebar {
+            flex: 0 0 250px; /* Largura fixa para a barra lateral */
+            background-color: #ffffff; /* Fundo branco para clareza */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky; /* Mantém a navegação visível ao rolar */
+            top: 20px;
+            align-self: flex-start; /* Alinha no topo */
+            max-height: calc(100vh - 40px); /* Limita a altura para scrollar */
+            overflow-y: auto; /* Adiciona scroll se o conteúdo for muito grande */
+        }
+
+        @media (prefers-color-scheme: dark) {
+            nav.sidebar {
+                background-color: #3a3a3a;
+            }
+        }
+
+        nav.sidebar h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav.sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav.sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        nav.sidebar ul li a {
+            display: block;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav.sidebar ul li a:hover {
+            background-color: var(--code-bg-color);
+            text-decoration: none;
+        }
+
+        main.content {
+            flex: 1; /* Ocupa o espaço restante */
+            min-width: 300px; /* Garante que o conteúdo não fique muito estreito */
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            main.content {
+                background-color: #3a3a3a;
+            }
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Estilo para detalhes/sumário (collapsible sections) */
+        details {
+            background-color: var(--code-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            outline: none; /* Remove outline ao focar */
+        }
+
+        summary:hover {
+            color: var(--secondary-color);
+        }
+
+        details div {
+            padding-top: 10px;
+            border-top: 1px dashed var(--border-color);
+            margin-top: 10px;
+        }
+
+        /* Estilo para blocos de código */
+        pre {
+            background-color: var(--code-bg-color);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto; /* Permite rolagem horizontal para código longo */
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #2a2a2a; /* Cor mais escura para o código */
+        }
+        @media (prefers-color-scheme: dark) {
+            pre {
+                color: #e0e0e0;
+            }
+        }
+
+        code {
+            background-color: var(--code-bg-color);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        /* Tabelas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        table thead th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table tbody td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: var(--code-bg-color);
+        }
+
+        /* Responsividade geral */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Pilha de itens em telas menores */
+                margin: 10px auto;
+                gap: 10px;
+            }
+
+            nav.sidebar {
+                position: static; /* Remove sticky em telas menores */
+                max-height: none; /* Remove limite de altura */
+                width: 100%;
+                order: -1; /* Coloca a navegação acima do conteúdo principal */
+                margin-bottom: 10px;
+            }
+
+            nav.sidebar ul {
+                display: flex; /* Transforma em barra de navegação horizontal (se couber) */
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav.sidebar ul li {
+                margin: 0 5px 10px 5px;
+            }
+
+            main.content {
+                padding: 20px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        .header-buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px; /* Espaçamento entre os botões */
+            flex-wrap: wrap; /* Permite que os botões quebrem linha em telas pequenas */
+            justify-content: center;
+        }
+
+        .header-buttons .btn {
+            background-color: #fff; /* Fundo branco para os botões */
+            color: var(--primary-color); /* Texto azul primário */
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            white-space: nowrap; /* Impede que o texto do botão quebre linha */
+        }
+
+        .header-buttons .btn:hover {
+            background-color: #e9ecef; /* Um pouco mais escuro no hover */
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Guia Abrangente de HTML e CSS</h1>
+    </header>
+     <div class="header-buttons">
+            <a href="https://www.uol.com.br" target="_blank" class="btn">PRINCIPAL</a>
+            <a href="https://www.google.com" target="_blank" class="btn">HTML</a>
+            <a href="https://www.caixa.gov.br" target="_blank" class="btn">CSS</a>
+        </div>
+
+    <div class="container">
+        <nav class="sidebar">
+            <h2>Índice</h2>
+            <ul>
+                <li><a href="#html-tags">Tags HTML</a>
+                    <ul>
+                        <li><a href="#html-div">&lt;div&gt;</a></li>
+                        <li><a href="#html-img">&lt;img&gt;</a></li>
+                        <li><a href="#html-form">&lt;form&gt;</a></li>
+                        <!-- Adicione mais tags aqui -->
+                    </ul>
+                </li>
+                <li><a href="#css-properties">Propriedades CSS</a>
+                    <ul>
+                        <li><a href="#css-display">display</a></li>
+                        <li><a href="#css-color">color</a></li>
+                        <li><a href="#css-flexbox">display: flex</a></li>
+                        <!-- Adicione mais propriedades aqui -->
+                    </ul>
+                </li>
+                <li><a href="#css-selectors">Seletores, Pseudo-classes e Pseudo-elementos</a></li>
+                <li><a href="#browser-compatibility">Tabelas de Compatibilidade de Navegadores</a></li>
+                <li><a href="#references">Referências Oficiais</a></li>
+                <li><a href="#best-practices">Melhores Práticas e Compatibilidade</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <section id="html-tags">
+                <h2>Tags HTML Atuais (Incluindo HTML5)</h2>
+                <p>Esta seção detalha as principais tags HTML, seus usos, atributos e exemplos práticos.</p>
+
+                <details id="html-div">
+                    <summary>&lt;div&gt; - Elemento de Divisão</summary>
+                    <div>
+                        <h3>Descrição</h3>
+                        <p>O elemento <code>&lt;div&gt;</code> é um contêiner genérico de nível de bloco para conteúdo. Ele não representa nada por si só e é usado principalmente para agrupar elementos para fins de estilização (com CSS) ou manipulação (com JavaScript).</p>
+                        <h3>Principais Atributos</h3>
+                        <ul>
+                            <li><code>id</code>: Identificador único para o elemento.</li>
+                            <li><code>class</code>: Uma ou mais classes de CSS para estilização.</li>
+                            <li><code>style</code>: Estilos CSS inline (não recomendado para folhas de estilo grandes).</li>
+                            <li><code>data-*</code>: Atributos de dados personalizados.</li>
+                        </ul>
+                        <h3>Exemplo de Uso</h3>
+<pre><code>&lt;div class="container"&gt;
+    &lt;h1&gt;Título da Seção&lt;/h1&gt;
+    &lt;p&gt;Este é um parágrafo dentro da div.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+&lt;/style&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details id="html-img">
+                    <summary>&lt;img&gt; - Elemento de Imagem</summary>
+                    <div>
+                        <h3>Descrição</h3>
+                        <p>O elemento <code>&lt;img&gt;</code> incorpora uma imagem no documento. É um elemento vazio, o que significa que não tem tag de fechamento.</p>
+                        <h3>Principais Atributos</h3>
+                        <ul>
+                            <li><code>src</code> (obrigatório): O caminho para o arquivo da imagem.</li>
+                            <li><code>alt</code> (obrigatório): Texto alternativo para a imagem, usado por leitores de tela e exibido se a imagem não puder ser carregada. Essencial para acessibilidade.</li>
+                            <li><code>width</code>: Largura da imagem em pixels.</li>
+                            <li><code>height</code>: Altura da imagem em pixels.</li>
+                            <li><code>loading</code>: Define como a imagem deve ser carregada (<code>lazy</code> para carregamento adiado, <code>eager</code> para carregamento imediato).</li>
+                        </ul>
+                        <h3>Exemplo de Uso</h3>
+<pre><code>&lt;img src="caminho/para/imagem.jpg" alt="Descrição da imagem" width="300" height="200"&gt;
+
+&lt;picture&gt;
+    &lt;source srcset="caminho/para/imagem-grande.webp" media="(min-width: 800px)"&gt;
+    &lt;source srcset="caminho/para/imagem-media.webp" media="(min-width: 400px)"&gt;
+    &lt;img src="caminho/para/imagem-pequena.jpg" alt="Descrição responsiva da imagem"&gt;
+&lt;/picture&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details id="html-form">
+                    <summary>&lt;form&gt; - Elemento de Formulário</summary>
+                    <div>
+                        <h3>Descrição</h3>
+                        <p>O elemento <code>&lt;form&gt;</code> representa uma seção de um documento que contém controles interativos para o envio de informações a um servidor web.</p>
+                        <h3>Principais Atributos</h3>
+                        <ul>
+                            <li><code>action</code>: A URL para onde os dados do formulário serão enviados.</li>
+                            <li><code>method</code>: O método HTTP a ser usado ao enviar os dados (<code>GET</code> ou <code>POST</code>).</li>
+                            <li><code>autocomplete</code>: Ativa ou desativa o preenchimento automático para o formulário.</li>
+                            <li><code>target</code>: Onde exibir a resposta após o envio do formulário (ex: <code>_blank</code> para nova aba).</li>
+                        </ul>
+                        <h3>Exemplo de Uso</h3>
+<pre><code>&lt;form action="/submit-form" method="post"&gt;
+    &lt;label for="username"&gt;Usuário:&lt;/label&gt;&lt;br&gt;
+    &lt;input type="text" id="username" name="username" required&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="email"&gt;Email:&lt;/label&gt;&lt;br&gt;
+    &lt;input type="email" id="email" name="email" placeholder="seuemail@exemplo.com"&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;input type="submit" value="Enviar"&gt;
+&lt;/form&gt;</code></pre>
+                    </div>
+                </details>
+
+                <!-- Adicione mais tags HTML aqui, seguindo o mesmo padrão -->
+
+            </section>
+
+            <section id="css-properties">
+                <h2>Propriedades CSS</h2>
+                <p>Esta seção lista as propriedades CSS mais comuns, seus valores possíveis e exemplos de aplicação.</p>
+
+                <details id="css-display">
+                    <summary><code>display</code> - Controla o tipo de caixa de exibição</summary>
+                    <div>
+                        <h3>Descrição</h3>
+                        <p>A propriedade <code>display</code> especifica o comportamento de exibição de um elemento. É fundamental para o layout da página.</p>
+                        <h3>Valores Possíveis</h3>
+                        <ul>
+                            <li><code>block</code>: Ocupa a largura total disponível e inicia uma nova linha (ex: <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code>).</li>
+                            <li><code>inline</code>: Ocupa apenas a largura necessária, não inicia uma nova linha (ex: <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>).</li>
+                            <li><code>inline-block</code>: Comporta-se como <code>inline</code>, mas aceita <code>width</code>, <code>height</code>, <code>margin</code> e <code>padding</code> como um <code>block</code>.</li>
+                            <li><code>flex</code>: Estabelece um contexto de formatação flexível para seus filhos diretos.</li>
+                            <li><code>grid</code>: Estabelece um contexto de formatação de grade para seus filhos diretos.</li>
+                            <li><code>none</code>: O elemento não é exibido (remove-o do fluxo do documento).</li>
+                            <li>e muitos outros (<code>table</code>, <code>table-cell</code>, <code>list-item</code>, etc.)</li>
+                        </ul>
+                        <h3>Exemplos de Uso</h3>
+<pre><code>.block-element {
+    display: block;
+    width: 100px; /* Ignorado por inline */
+}
+
+.inline-element {
+    display: inline;
+    padding: 5px; /* Aceito, mas width/height ignorados */
+}
+
+.inline-block-element {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    margin: 10px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}</code></pre>
+                    </div>
+                </details>
+
+                <details id="css-color">
+                    <summary><code>color</code> - Define a cor do texto</summary>
+                    <div>
+                        <h3>Descrição</h3>
+                        <p>A propriedade <code>color</code> define a cor de primeiro plano do conteúdo textual de um elemento e de quaisquer decorações de texto.</p>
+                        <h3>Valores Possíveis</h3>
+                        <ul>
+                            <li>Nomes de cores: <code>red</code>, <code>blue</code>, <code>green</code>, <code>black</code>, <code>white</code>, etc.</li>
+                            <li>Hexadecimal: <code>#RRGGBB</code> (ex: <code>#FF0000</code> para vermelho), <code>#RGB</code> (ex: <code>#F00</code> para vermelho).</li>
+                            <li>RGB/RGBA: <code>rgb(R, G, B)</code> (ex: <code>rgb(255, 0, 0)</code>), <code>rgba(R, G, B, A)</code> (ex: <code>rgba(255, 0, 0, 0.5)</code> para vermelho com 50% de opacidade).</li>
+                            <li>HSL/HSLA: <code>hsl(H, S%, L%)</code>, <code>hsla(H, S%, L%, A)</code>.</li>
+                            <li>Palavras-chave do sistema: <code>currentColor</code>, <code>transparent</code>.</li>
+                        </ul>
+                        <h3>Exemplos de Uso</h3>
+<pre><code>p {
+    color: blue; /* Nome da cor */
+}
+
+h1 {
+    color: #336699; /* Hexadecimal */
+}
+
+.warning {
+    color: rgb(255, 99, 71); /* RGB */
+}
+
+.faded-text {
+    color: rgba(0, 0, 0, 0.7); /* RGBA com opacidade */
+}</code></pre>
+                    </div>
+                </details>
+
+                <details id="css-flexbox">
+                    <summary><code>display: flex</code> - Modelo de layout Flexbox</summary>
+                    <div>
+                        <h3>Descrição</h3>
+                        <p>Quando <code>display</code> é definido como <code>flex</code> em um contêiner, ele se torna um flex container, e seus filhos diretos se tornam flex items. Isso ativa o módulo Flexbox, um modelo de layout unidimensional que permite organizar itens em linhas ou colunas de forma eficiente, distribuindo o espaço.</p>
+                        <h3>Propriedades Principais do Flex Container</h3>
+                        <ul>
+                            <li><code>flex-direction</code>: (<code>row</code>, <code>row-reverse</code>, <code>column</code>, <code>column-reverse</code>) Define a direção dos itens flex.</li>
+                            <li><code>justify-content</code>: (<code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>space-between</code>, <code>space-around</code>, <code>space-evenly</code>) Alinha os itens ao longo do eixo principal.</li>
+                            <li><code>align-items</code>: (<code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>baseline</code>, <code>stretch</code>) Alinha os itens ao longo do eixo transversal.</li>
+                            <li><code>flex-wrap</code>: (<code>nowrap</code>, <code>wrap</code>, <code>wrap-reverse</code>) Controla se os itens devem quebrar para a próxima linha.</li>
+                            <li><code>gap</code>: Define o espaçamento entre as linhas e colunas (substitui margin em alguns casos).</li>
+                        </ul>
+                        <h3>Exemplo de Uso</h3>
+<pre><code>.flex-container {
+    display: flex;
+    flex-direction: row; /* Itens em linha */
+    justify-content: space-around; /* Espaço igual entre e ao redor dos itens */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 10px; /* Espaço de 10px entre os itens */
+    height: 100px;
+    border: 1px solid var(--primary-color);
+}
+
+.flex-item {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}</code></pre>
+<pre><code>&lt;div class="flex-container"&gt;
+    &lt;div class="flex-item"&gt;Item 1&lt;/div&gt;
+    &lt;div class="flex-item"&gt;Item 2&lt;/div&gt;
+    &lt;div class="flex-item"&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </details>
+
+                <!-- Adicione mais propriedades CSS aqui, seguindo o mesmo padrão -->
+
+            </section>
+
+            <section id="css-selectors">
+                <h2>Seletores CSS, Pseudo-classes e Pseudo-elementos</h2>
+                <p>Os seletores CSS são padrões usados para selecionar os elementos HTML que você deseja estilizar. Pseudo-classes e pseudo-elementos fornecem maneiras de estilizar elementos com base em seu estado ou em partes específicas de um elemento, respectivamente.</p>
+
+                <h3>Seletores Básicos</h3>
+                <ul>
+                    <li><strong>Seletor de Tipo:</strong> Seleciona todos os elementos de um determinado tipo (ex: <code>p { color: blue; }</code>).</li>
+                    <li><strong>Seletor de Classe:</strong> Seleciona elementos com um atributo <code>class</code> específico (ex: <code>.minha-classe { font-weight: bold; }</code>).</li>
+                    <li><strong>Seletor de ID:</strong> Seleciona um elemento com um atributo <code>id</code> específico e único (ex: <code>#meu-id { font-size: 20px; }</code>).</li>
+                    <li><strong>Seletor Universal:</strong> Seleciona todos os elementos (ex: <code>* { margin: 0; padding: 0; }</code>).</li>
+                </ul>
+                <h3>Seletores Combinadores</h3>
+                <ul>
+                    <li><strong>Descendente:</strong> Seleciona um elemento que é descendente de outro (ex: <code>div p { color: green; }</code>).</li>
+                    <li><strong>Filho Direto:</strong> Seleciona um elemento que é filho direto de outro (ex: <code>ul > li { list-style: none; }</code>).</li>
+                    <li><strong>Irmão Adjacente:</strong> Seleciona um elemento que é o próximo irmão do primeiro elemento especificado (ex: <code>h1 + p { margin-top: 0; }</code>).</li>
+                    <li><strong>Irmão Geral:</strong> Seleciona um elemento que é irmão do primeiro elemento especificado (ex: <code>h1 ~ p { text-indent: 20px; }</code>).</li>
+                </ul>
+                <h3>Pseudo-classes</h3>
+                <p>Usadas para selecionar elementos com base em um estado específico, como quando o mouse está sobre eles, ou se são o primeiro filho, etc.</p>
+                <ul>
+                    <li><code>:hover</code>: Elemento sob o cursor do mouse.</li>
+                    <li><code>:active</code>: Elemento sendo ativado (clicado).</li>
+                    <li><code>:focus</code>: Elemento que tem o foco (ex: input de formulário).</li>
+                    <li><code>:nth-child(n)</code>: Seleciona o n-ésimo filho de seu pai.</li>
+                    <li><code>:first-child</code>: Primeiro filho de seu pai.</li>
+                    <li><code>:last-child</code>: Último filho de seu pai.</li>
+                    <li><code>:not()</code>: Seleciona elementos que não correspondem ao seletor dentro dos parênteses.</li>
+                    <li><code>:checked</code>: Elementos de formulário (checkbox, radio) que estão marcados.</li>
+                    <li><code>:valid</code>, <code>:invalid</code>: Campos de formulário com conteúdo válido/inválido.</li>
+                </ul>
+                <h3>Pseudo-elementos</h3>
+                <p>Usados para estilizar uma parte específica de um elemento ou para inserir conteúdo antes ou depois do conteúdo real de um elemento.</p>
+                <ul>
+                    <li><code>::before</code>: Insere conteúdo antes do conteúdo de um elemento.</li>
+                    <li><code>::after</code>: Insere conteúdo depois do conteúdo de um elemento.</li>
+                    <li><code>::first-line</code>: Estiliza a primeira linha de um bloco de texto.</li>
+                    <li><code>::first-letter</code>: Estiliza a primeira letra de um bloco de texto.</li>
+                    <li><code>::selection</code>: Estiliza a parte de um elemento que foi selecionada pelo usuário.</li>
+                    <li><code>::placeholder</code>: Estiliza o texto de espaço reservado em campos de entrada.</li>
+                </ul>
+                <h3>Exemplos</h3>
+<pre><code>a:hover {
+    color: var(--primary-color);
+}
+
+input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+li:nth-child(even) {
+    background-color: #f0f0f0; /* Fundo diferente para itens pares da lista */
+}
+
+p::first-letter {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.icon::before {
+    content: "➡️ "; /* Insere um ícone antes do texto */
+}</code></pre>
+            </section>
+
+            <section id="browser-compatibility">
+                <h2>Tabelas Comparativas de Suporte a Navegadores</h2>
+                <p>Manter-se atualizado com a compatibilidade de navegadores é crucial para o desenvolvimento web. As tabelas abaixo fornecem um exemplo de como apresentar essa informação. Para dados mais abrangentes e atualizados, é altamente recomendado consultar recursos como o <a href="https://caniuse.com/" target="_blank">Can I Use...</a> e o <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element" target="_blank">MDN Web Docs</a>.</p>
+
+                <h3>Exemplo: Suporte à tag &lt;picture&gt;</h3>
+<table class="data-table">
+  <thead>
+    <tr>
+      <th scope="col">Funcionalidade</th>
+      <th scope="col">Chrome</th>
+      <th scope="col">Firefox</th>
+      <th scope="col">Safari</th>
+      <th scope="col">Edge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;picture&gt;</code> element</td>
+      <td>Sim (38+)</td>
+      <td>Sim (38+)</td>
+      <td>Sim (9+)</td>
+      <td>Sim (13+)</td>
+    </tr>
+    <tr>
+      <td><code>srcset</code> atributo</td>
+      <td>Sim (38+)</td>
+      <td>Sim (38+)</td>
+      <td>Sim (8+)</td>
+      <td>Sim (13+)</td>
+    </tr>
+  </tbody>
+</table>
+
+                <h3>Exemplo: Suporte à propriedade CSS <code>gap</code> (para Flexbox)</h3>
+<table class="data-table">
+  <thead>
+    <tr>
+      <th scope="col">Propriedade</th>
+      <th scope="col">Chrome</th>
+      <th scope="col">Firefox</th>
+      <th scope="col">Safari</th>
+      <th scope="col">Edge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>gap</code> em Flexbox</td>
+      <td>Sim (84+)</td>
+      <td>Sim (63+)</td>
+      <td>Sim (11.1+)</td>
+      <td>Sim (84+)</td>
+    </tr>
+    <tr>
+      <td><code>row-gap</code> em Flexbox</td>
+      <td>Sim (84+)</td>
+      <td>Sim (63+)</td>
+      <td>Sim (11.1+)</td>
+      <td>Sim (84+)</td>
+    </tr>
+  </tbody>
+</table>
+                <p><strong>Nota:</strong> As versões mínimas indicadas são aproximadas e podem variar ligeiramente. Sempre consulte as fontes oficiais para a informação mais precisa.</p>
+            </section>
+
+            <section id="references">
+                <h2>Referências a Especificações Oficiais</h2>
+                <p>Para informações detalhadas e as especificações mais atualizadas, consulte as seguintes fontes:</p>
+                <ul>
+                    <li><strong>W3C (World Wide Web Consortium):</strong>
+                        <ul>
+                            <li><a href="https://www.w3.org/standards/webdesign/htmlcss" target="_blank">Especificações HTML e CSS</a></li>
+                            <li><a href="https://html.spec.whatwg.org/multipage/" target="_blank">WHATWG HTML Living Standard</a> (a especificação viva do HTML)</li>
+                        </ul>
+                    </li>
+                    <li><strong>MDN Web Docs (Mozilla Developer Network):</strong> Um recurso excelente e amplamente utilizado para documentação de tecnologias web.
+                        <ul>
+                            <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank">HTML no MDN</a></li>
+                            <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank">CSS no MDN</a></li>
+                            <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/Guide/HTML/HTML5" target="_blank">Guia de HTML5 no MDN</a></li>
+                        </ul>
+                    </li>
+                    <li><strong>Can I Use...:</strong> Para verificar o suporte a funcionalidades web em diferentes navegadores.
+                        <ul>
+                            <li><a href="https://caniuse.com/" target="_blank">Can I Use...</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="best-practices">
+                <h2>Considerações sobre Compatibilidade e Melhores Práticas</h2>
+                <p>Desenvolver para a web moderna exige atenção à compatibilidade e à adoção de melhores práticas para garantir que seus sites funcionem bem em diversos dispositivos e navegadores.</p>
+
+                <h3>Compatibilidade entre Navegadores (Cross-Browser Compatibility)</h3>
+                <ul>
+                    <li><strong>Teste em Múltiplos Navegadores:</strong> Sempre teste seu código em Chrome, Firefox, Safari e Edge (e suas versões móveis) para identificar inconsistências.</li>
+                    <li><strong>Prefixos de Vendor:</strong> Embora menos comuns hoje com a padronização de muitas propriedades, algumas propriedades CSS experimentais ou mais recentes ainda podem precisar de prefixos como <code>-webkit-</code>, <code>-moz-</code>, <code>-ms-</code>, <code>-o-</code>. Ferramentas como o Autoprefixer podem ajudar nisso.</li>
+                    <li><strong>Feature Detection (Detecção de Recursos):</strong> Em vez de detectar o navegador, detecte se um recurso CSS ou JavaScript específico é suportado. Bibliotecas como Modernizr podem auxiliar, ou você pode fazer isso manualmente com JavaScript.</li>
+                    <li><strong>Graceful Degradation e Progressive Enhancement:</strong>
+                        <ul>
+                            <li>**Graceful Degradation:** Construa para navegadores modernos primeiro, e então forneça uma experiência básica para navegadores mais antigos.</li>
+                            <li>**Progressive Enhancement:** Comece com uma experiência básica que funciona em todos os navegadores, e então adicione camadas de funcionalidades e estilização para navegadores mais capazes.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Melhores Práticas de HTML e CSS</h3>
+                <ul>
+                    <li><strong>Semântica HTML:</strong> Use as tags HTML de acordo com seu significado (ex: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>). Isso melhora a acessibilidade e o SEO.</li>
+                    <li><strong>Acessibilidade (ARIA):</strong> Utilize atributos ARIA (Accessible Rich Internet Applications) quando o HTML semântico não for suficiente para descrever a função ou o estado de um elemento para tecnologias assistivas.</li>
+                    <li><strong>CSS Modular:</strong> Organize seu CSS em módulos lógicos (ex: BEM, OOCSS, SMACSS) para facilitar a manutenção e escalabilidade.</li>
+                    <li><strong>Nomenclatura Consistente:</strong> Use convenções de nomenclatura claras e consistentes para classes e IDs.</li>
+                    <li><strong>Otimização de Performance:</strong>
+                        <ul>
+                            <li>Minimize e comprima seus arquivos HTML, CSS e JavaScript.</li>
+                            <li>Otimize imagens.</li>
+                            <li>Use carregamento assíncrono para scripts e folhas de estilo não críticos.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Responsividade (Mobile-First):</strong> Projete e desenvolva primeiro para telas pequenas, e então expanda para telas maiores usando media queries. Isso garante que a experiência mobile seja priorizada e eficiente.</li>
+                    <li><strong>Validação de Código:</strong> Valide seu HTML e CSS usando os validadores do W3C para garantir que seu código esteja livre de erros e siga as especificações.</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Guia Abrangente de HTML e CSS. Desenvolvido com o apoio de One, by Adapta.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Propriedades CSS Abrangente</title>
+    <style>
+        /* Reset básico e tipografia */
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #007bff;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+            --code-bg-color: #e9ecef;
+            --border-color: #dee2e6;
+            --header-bg-color: #007bff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #6daee3;
+                --secondary-color: #8bb3e1;
+                --text-color: #e0e0e0;
+                --bg-color: #2c2c2c;
+                --code-bg-color: #444;
+                --border-color: #555;
+                --header-bg-color: #4a4a4a;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            background-color: var(--header-bg-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative; /* Necessário para posicionamento absoluto de elementos internos se for o caso */
+            display: flex; /* Usar flexbox para alinhar conteúdo e botões */
+            flex-direction: column; /* Conteúdo principal do header em coluna */
+            align-items: center; /* Centraliza itens horizontalmente */
+            justify-content: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .header-buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px; /* Espaçamento entre os botões */
+            flex-wrap: wrap; /* Permite que os botões quebrem linha em telas pequenas */
+            justify-content: center;
+        }
+
+        .header-buttons .btn {
+            background-color: #fff; /* Fundo branco para os botões */
+            color: var(--primary-color); /* Texto azul primário */
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            white-space: nowrap; /* Impede que o texto do botão quebre linha */
+        }
+
+        .header-buttons .btn:hover {
+            background-color: #e9ecef; /* Um pouco mais escuro no hover */
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        nav.sidebar {
+            flex: 0 0 250px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 20px;
+            align-self: flex-start;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+            min-width: 200px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            nav.sidebar {
+                background-color: #3a3a3a;
+            }
+        }
+
+        nav.sidebar h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav.sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav.sidebar ul li {
+            margin-bottom: 5px;
+        }
+
+        nav.sidebar ul li a {
+            display: block;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav.sidebar ul li a:hover {
+            background-color: var(--code-bg-color);
+            text-decoration: none;
+        }
+
+        nav.sidebar ul ul {
+            margin-left: 15px;
+            margin-top: 5px;
+            border-left: 2px solid var(--border-color);
+            padding-left: 10px;
+        }
+
+        main.content {
+            flex: 1;
+            min-width: 300px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            main.content {
+                background-color: #3a3a3a;
+            }
+        }
+
+        h2, h3 {
+            color: var(--primary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Estilo para detalhes/sumário (collapsible sections) */
+        details {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        details[open] {
+             background-color: #ffffff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            details[open] {
+                background-color: #3a3a3a;
+            }
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            padding: 10px 15px;
+            background-color: var(--code-bg-color);
+            border-bottom: 1px solid var(--border-color);
+            border-radius: 5px 5px 0 0;
+            color: var(--primary-color);
+        }
+
+        details[open] summary {
+            border-radius: 5px 5px 0 0;
+        }
+
+        summary:hover {
+            background-color: #dde1e5;
+            text-decoration: none; /* Não sublinhar no hover do summary */
+        }
+
+        @media (prefers-color-scheme: dark) {
+            summary:hover {
+                background-color: #555;
+            }
+        }
+
+        details div {
+            padding: 15px;
+        }
+
+        details div ul {
+            list-style: disc; /* Usar bullet points para listas de valores */
+            padding-left: 20px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        details div ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Estilo para blocos de código */
+        pre {
+            background-color: var(--code-bg-color);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #2a2a2a;
+        }
+        @media (prefers-color-scheme: dark) {
+            pre {
+                color: #e0e0e0;
+            }
+        }
+
+        code {
+            background-color: var(--code-bg-color);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #d63384;
+        }
+        @media (prefers-color-scheme: dark) {
+            code {
+                color: #ff8c00;
+            }
+        }
+        .prop-name {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        /* Responsividade geral */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin: 10px auto;
+                gap: 10px;
+            }
+
+            nav.sidebar {
+                position: static;
+                max-height: none;
+                width: 100%;
+                order: -1;
+                margin-bottom: 10px;
+            }
+
+            nav.sidebar ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav.sidebar ul li {
+                margin: 0 5px 10px 5px;
+            }
+
+            nav.sidebar ul ul {
+                display: none;
+            }
+
+            main.content {
+                padding: 20px;
+            }
+
+            .header-buttons {
+                flex-direction: column; /* Botões empilhados em telas pequenas */
+                width: 90%; /* Ocupa mais largura */
+                align-items: stretch; /* Estica os botões para largura total */
+            }
+            .header-buttons .btn {
+                text-align: center; /* Centraliza o texto nos botões empilhados */
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: var(--header-bg-color);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Catálogo de Propriedades CSS Abrangente</h1>
+        <p>Um guia interativo com propriedades CSS, suas descrições, valores e exemplos.</p>
+        <div class="header-buttons">
+            <a href="https://www.uol.com.br" target="_blank" class="btn">PRINCIPAL</a>
+            <a href="https://www.google.com" target="_blank" class="btn">HTML</a>
+            <a href="https://www.caixa.gov.br" target="_blank" class="btn">CSS</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="sidebar">
+            <h2>Categorias de Propriedades</h2>
+            <ul>
+                <li><a href="#layout">Layout e Posicionamento</a></li>
+                <li><a href="#box-model">Modelo de Caixa (Box Model)</a></li>
+                <li><a href="#typography">Tipografia</a></li>
+                <li><a href="#colors-backgrounds">Cores e Fundos</a></li>
+                <li><a href="#borders-outlines">Bordas e Contornos</a></li>
+                <li><a href="#visual-effects">Efeitos Visuais e Transformações</a></li>
+                <li><a href="#transitions-animations">Transições e Animações</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <p>Este documento apresenta uma vasta coleção de propriedades CSS, organizadas por categorias. Clique em cada item para expandir e ver detalhes como a descrição, valores possíveis e exemplos de uso.</p>
+            <p><strong>Nota:</strong> Esta é uma seleção representativa e abrangente. Para uma lista *exaustiva* e sempre atualizada, com detalhes sobre compatibilidade de navegadores, consulte o <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS/Reference" target="_blank">MDN Web Docs - Referência CSS</a>.</p>
+
+            <section id="layout">
+                <h2>Layout e Posicionamento</h2>
+                <details>
+                    <summary><code>display</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>display</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>A propriedade <code>display</code> define o tipo de caixa de exibição de um elemento. É a propriedade mais fundamental para controlar o layout de um elemento, determinando como ele se comporta em relação a outros elementos na página.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>block</code>: O elemento ocupa a largura total disponível e inicia uma nova linha (ex: <code>div</code>, <code>p</code>, <code>h1</code>).</li>
+                            <li><code>inline</code>: O elemento ocupa apenas a largura necessária para seu conteúdo e não inicia uma nova linha (ex: <code>span</code>, <code>a</code>, <code>strong</code>).</li>
+                            <li><code>inline-block</code>: Comporta-se como <code>inline</code>, mas aceita <code>width</code>, <code>height</code>, <code>margin</code> e <code>padding</code> como um elemento de bloco.</li>
+                            <li><code>flex</code>: Torna o elemento um flex container, permitindo o layout de seus filhos diretos (flex items) usando o modelo Flexbox.</li>
+                            <li><code>grid</code>: Torna o elemento um grid container, permitindo o layout de seus filhos diretos (grid items) usando o modelo Grid.</li>
+                            <li><code>none</code>: O elemento não é exibido e é completamente removido do fluxo do documento (como se não existisse).</li>
+                            <li>Outros: <code>table</code>, <code>table-cell</code>, <code>list-item</code>, <code>flow-root</code>, etc.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>/* Elemento de bloco */
+p {
+    display: block;
+}
+
+/* Elemento inline */
+span {
+    display: inline;
+}
+
+/* Elemento inline-block */
+.button {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+}
+
+/* Container Flexbox */
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Container Grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* Esconder elemento */
+.hidden-element {
+    display: none;
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>position</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>position</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>A propriedade <code>position</code> especifica o tipo de método de posicionamento usado para um elemento. Combinada com <code>top</code>, <code>bottom</code>, <code>left</code> e <code>right</code>, ela controla o posicionamento exato.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>static</code>: Posição padrão. Elementos são posicionados de acordo com o fluxo normal do documento. <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code> não têm efeito.</li>
+                            <li><code>relative</code>: O elemento é posicionado de acordo com o fluxo normal, mas então deslocado de sua posição normal. <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code> funcionam. Ocupa espaço no fluxo normal.</li>
+                            <li><code>absolute</code>: O elemento é removido do fluxo normal do documento e posicionado em relação ao seu ancestral posicionado mais próximo (não <code>static</code>). Se não houver, é posicionado em relação ao <code>&lt;html&gt;</code>.</li>
+                            <li><code>fixed</code>: O elemento é removido do fluxo normal e posicionado em relação à viewport. Permanece no mesmo lugar mesmo quando a página é rolada.</li>
+                            <li><code>sticky</code>: Comporta-se como <code>relative</code> até que o elemento atinja um limite de deslocamento (definido por <code>top</code>, etc.) quando se torna <code>fixed</code>.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>/* Elemento relativo */
+.box-relative {
+    position: relative;
+    top: 20px;
+    left: 30px;
+}
+
+/* Elemento absoluto dentro de um pai relativo */
+.parent {
+    position: relative;
+    height: 200px;
+    border: 1px solid black;
+}
+.child-absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: lightblue;
+}
+
+/* Elemento fixo */
+.header-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+
+/* Elemento sticky */
+.sidebar-sticky {
+    position: sticky;
+    top: 0; /* Irá fixar quando a rolagem atingir o topo */
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>float</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>float</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>A propriedade <code>float</code> é usada para posicionar um elemento à esquerda ou à direita de seu contêiner, permitindo que o texto e os elementos inline fluam ao redor dele. Era amplamente usada para layouts de múltiplas colunas antes do Flexbox e Grid.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>left</code>: Flutua o elemento à esquerda.</li>
+                            <li><code>right</code>: Flutua o elemento à direita.</li>
+                            <li><code>none</code>: Valor padrão. O elemento não flutua.</li>
+                            <li><code>inherit</code>: Herda o valor do elemento pai.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.image-float-left {
+    float: left;
+    margin-right: 15px;
+}
+
+.text-content {
+    /* O texto irá fluir ao redor da imagem flutuante */
+}
+
+/* Para "limpar" o float, impedindo que o conteúdo subsequente se alinhe */
+.clear-float {
+    clear: both; /* Ou left, ou right */
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>clear</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>clear</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>A propriedade <code>clear</code> especifica de que lado (ou de ambos) um elemento não pode ter elementos flutuantes. É usada para controlar o fluxo de layout após elementos flutuantes.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>none</code>: Padrão. O elemento pode flutuar de ambos os lados.</li>
+                            <li><code>left</code>: O elemento se move abaixo de qualquer elemento flutuante à esquerda.</li>
+                            <li><code>right</code>: O elemento se move abaixo de qualquer elemento flutuante à direita.</li>
+                            <li><code>both</code>: O elemento se move abaixo de qualquer elemento flutuante (à esquerda ou à direita).</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>&lt;div style="float: left; width: 100px; height: 100px; background: red;"&gt;&lt;/div&gt;
+&lt;p&gt;Este texto irá fluir ao lado do div flutuante.&lt;/p&gt;
+&lt;div style="clear: both; background: green; height: 50px;"&gt;Este div limpa o float e aparece abaixo.&lt;/div&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Flexbox: <code>flex-direction</code>, <code>justify-content</code>, <code>align-items</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>flex-direction</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define a direção principal em que os flex items são colocados no flex container (o eixo principal).</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>row</code> (padrão): Da esquerda para a direita (ou direita para a esquerda em LTR/RTL).</li>
+                            <li><code>row-reverse</code>: Da direita para a esquerda (ou esquerda para a direita em LTR/RTL).</li>
+                            <li><code>column</code>: De cima para baixo.</li>
+                            <li><code>column-reverse</code>: De baixo para cima.</li>
+                        </ul>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>.container-flex {
+    display: flex;
+    flex-direction: column; /* Itens empilhados verticalmente */
+}</code></pre>
+
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>justify-content</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Alinha os flex items ao longo do eixo principal do flex container.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>flex-start</code>: Itens alinhados no início do eixo principal.</li>
+                            <li><code>flex-end</code>: Itens alinhados no final do eixo principal.</li>
+                            <li><code>center</code>: Itens centralizados no eixo principal.</li>
+                            <li><code>space-between</code>: O primeiro item fica no início, o último no final, e o espaço restante é distribuído igualmente entre os itens.</li>
+                            <li><code>space-around</code>: O espaço é distribuído igualmente ao redor de cada item (metade do espaço nas extremidades).</li>
+                            <li><code>space-evenly</code>: O espaço é distribuído igualmente entre os itens e nas extremidades.</li>
+                        </ul>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>.container-flex {
+    display: flex;
+    justify-content: space-between; /* Espaço entre os itens */
+}</code></pre>
+
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>align-items</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Alinha os flex items ao longo do eixo transversal (perpendicular ao eixo principal) do flex container.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>flex-start</code>: Itens alinhados no início do eixo transversal.</li>
+                            <li><code>flex-end</code>: Itens alinhados no final do eixo transversal.</li>
+                            <li><code>center</code>: Itens centralizados no eixo transversal.</li>
+                            <li><code>baseline</code>: Itens alinhados com base na linha de base de seu conteúdo.</li>
+                            <li><code>stretch</code> (padrão): Itens esticados para preencher o contêiner (respeitando <code>min-height/max-height</code>).</li>
+                        </ul>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>.container-flex {
+    display: flex;
+    height: 200px; /* Para visualizar o alinhamento */
+    align-items: center; /* Centraliza verticalmente os itens */
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Grid: <code>grid-template-columns</code>, <code>grid-template-rows</code>, <code>gap</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>grid-template-columns</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define os nomes e as funções de cada coluna na grade.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>none</code>: Nenhuma coluna explícita.</li>
+                            <li><code>&lt;length&gt;</code>: Largura fixa (ex: <code>100px</code>).</li>
+                            <li><code>&lt;percentage&gt;</code>: Largura percentual (ex: <code>50%</code>).</li>
+                            <li><code>fr</code> unit: Fração do espaço disponível (ex: <code>1fr</code>, <code>2fr</code>).</li>
+                            <li><code>auto</code>: A largura é determinada automaticamente.</li>
+                            <li><code>min-content</code>, <code>max-content</code>: Largura baseada no conteúdo.</li>
+                            <li><code>repeat()</code>: Repete um padrão (ex: <code>repeat(3, 1fr)</code>).</li>
+                        </ul>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Três colunas: 1 parte, 2 partes, 1 parte */
+    grid-template-rows: auto 100px; /* Linha automática, e uma de 100px */
+}</code></pre>
+
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>grid-template-rows</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define os nomes e as funções de cada linha na grade.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li>Mesmos valores que <code>grid-template-columns</code> (exceto que aplicados a linhas).</li>
+                        </ul>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>.grid-container {
+    display: grid;
+    grid-template-rows: 50px auto 200px; /* Três linhas com alturas específicas */
+}</code></pre>
+
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>gap</code> (ou <code>grid-gap</code>)</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define o tamanho das lacunas entre as linhas e colunas em um layout de grade ou flexbox. É um atalho para <code>row-gap</code> e <code>column-gap</code>.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>&lt;length&gt;</code>: Um valor de comprimento (ex: <code>10px</code>, <code>1em</code>).</li>
+                            <li><code>&lt;percentage&gt;</code>: Um valor percentual.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* 20px de espaço entre linhas e colunas */
+}
+
+/* Ou usando as propriedades individuais */
+.flex-container {
+    display: flex;
+    row-gap: 10px; /* Espaço entre linhas */
+    column-gap: 5px; /* Espaço entre colunas */
+}</code></pre>
+                    </div>
+                </details>
+
+            </section>
+
+            <section id="box-model">
+                <h2>Modelo de Caixa (Box Model)</h2>
+                <details>
+                    <summary><code>width</code> e <code>height</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>width</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define a largura da área de conteúdo de um elemento.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>&lt;length&gt;</code>: Um valor fixo (ex: <code>100px</code>, <code>5em</code>).</li>
+                            <li><code>&lt;percentage&gt;</code>: Uma porcentagem da largura do elemento pai (ex: <code>50%</code>).</li>
+                            <li><code>auto</code>: Padrão. A largura é determinada automaticamente pelo navegador.</li>
+                            <li><code>inherit</code>: Herda o valor do pai.</li>
+                            <li><code>initial</code>, <code>unset</code>, <code>revert</code>.</li>
+                        </ul>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>.my-box {
+    width: 300px;
+    height: 150px;
+}
+
+.responsive-image {
+    width: 100%; /* Ocupa a largura total do pai */
+    height: auto; /* Mantém a proporção da imagem */
+}</code></pre>
+
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>height</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define a altura da área de conteúdo de um elemento.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li>Mesmos valores que <code>width</code>.</li>
+                            <li>Para elementos inline, <code>height</code> não afeta a altura visual; use <code>line-height</code> ou mude para <code>inline-block</code>.</li>
+                        </ul>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>.header {
+    height: 80px;
+    background-color: navy;
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>margin</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>margin</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define o espaço externo ao redor de um elemento, criando uma área transparente que separa o elemento de outros elementos. É uma propriedade shorthand para <code>margin-top</code>, <code>margin-right</code>, <code>margin-bottom</code> e <code>margin-left</code>.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>&lt;length&gt;</code>: Um valor fixo (ex: <code>10px</code>, <code>1em</code>).</li>
+                            <li><code>&lt;percentage&gt;</code>: Uma porcentagem da largura do bloco contendo o elemento.</li>
+                            <li><code>auto</code>: Permite que o navegador calcule a margem. Útil para centralizar blocos (<code>margin: 0 auto;</code>).</li>
+                            <li>Pode aceitar 1, 2, 3 ou 4 valores:
+                                <ul>
+                                    <li><code>margin: 10px;</code> (todos os lados)</li>
+                                    <li><code>margin: 10px 20px;</code> (top/bottom, left/right)</li>
+                                    <li><code>margin: 10px 20px 30px;</code> (top, left/right, bottom)</li>
+                                    <li><code>margin: 10px 20px 30px 40px;</code> (top, right, bottom, left)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.card {
+    margin: 20px; /* 20px em todos os lados */
+}
+
+.title {
+    margin: 0 auto 10px auto; /* Centraliza horizontalmente, 10px embaixo */
+    width: fit-content; /* Necessário para centralizar com margin: auto */
+}
+
+.spacing-top {
+    margin-top: 50px;
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>padding</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>padding</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define o espaço interno entre o conteúdo de um elemento e sua borda. É uma propriedade shorthand para <code>padding-top</code>, <code>padding-right</code>, <code>padding-bottom</code> e <code>padding-left</code>.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>&lt;length&gt;</code>, <code>&lt;percentage&gt;</code> (similar a <code>margin</code>).</li>
+                            <li>Pode aceitar 1, 2, 3 ou 4 valores (similar a <code>margin</code>).</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.button {
+    padding: 10px 15px; /* 10px top/bottom, 15px left/right */
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.content-box {
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid var(--border-color);
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>border</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>border</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define a borda ao redor de um elemento. É uma propriedade shorthand para <code>border-width</code>, <code>border-style</code> e <code>border-color</code>.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>&lt;border-width&gt;</code>: (ex: <code>1px</code>, <code>medium</code>, <code>thick</code>).</li>
+                            <li><code>&lt;border-style&gt;</code>: (ex: <code>solid</code>, <code>dashed</code>, <code>dotted</code>, <code>double</code>, <code>groove</code>, <code>ridge</code>, <code>inset</code>, <code>outset</code>, <code>none</code>, <code>hidden</code>).</li>
+                            <li><code>&lt;color&gt;</code>: (ex: <code>red</code>, <code>#000</code>, <code>rgb(255,0,0)</code>).</li>
+                            <li>Pode ser aplicado individualmente (ex: <code>border-top</code>, <code>border-right</code>, etc.).</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.element-with-border {
+    border: 2px solid #333;
+}
+
+.card-custom-border {
+    border-top: 5px dotted blue;
+    border-right: 1px solid black;
+    border-bottom: none;
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>box-sizing</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>box-sizing</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Controla como a largura e a altura totais de um elemento são calculadas. Isso inclui ou exclui o padding e a borda na dimensão declarada.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>content-box</code> (padrão): A largura e a altura do elemento incluem apenas o conteúdo. Padding e borda são adicionados à dimensão total.</li>
+                            <li><code>border-box</code>: A largura e a altura do elemento incluem o padding e a borda, mas não a margem. Mais intuitivo para layout.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>/* Padrão para todos os elementos para facilitar o layout */
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.my-div {
+    width: 200px;
+    padding: 10px;
+    border: 5px solid black;
+    /* Se box-sizing: border-box, a largura real será 200px.
+       Se content-box, a largura real será 200px + 2*10px (padding) + 2*5px (border) = 230px */
+}</code></pre>
+                    </div>
+                </details>
+            </section>
+
+            <section id="typography">
+                <h2>Tipografia</h2>
+                <details>
+                    <summary><code>font-family</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>font-family</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define a família de fontes a ser usada para um texto. Pode ser uma lista de fontes (font-stack), onde o navegador usa a primeira que encontrar no sistema do usuário.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li>Nomes de fontes específicos (ex: <code>Arial</code>, <code>"Times New Roman"</code>). Se o nome tiver espaços, use aspas.</li>
+                            <li>Nomes genéricos de família de fontes (ex: <code>serif</code>, <code>sans-serif</code>, <code>monospace</code>, <code>cursive</code>, <code>fantasy</code>). É uma boa prática incluir um genérico como fallback.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-family: "Georgia", serif;
+}
+
+.code-block {
+    font-family: "Courier New", monospace;
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>font-size</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>font-size</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define o tamanho da fonte do texto.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>&lt;length&gt;</code>: Pixels (<code>16px</code>), em (<code>1em</code>), rem (<code>1rem</code>). <code>em</code> e <code>rem</code> são preferidos para responsividade.</li>
+                            <li><code>&lt;percentage&gt;</code>: Porcentagem do tamanho da fonte do elemento pai (ex: <code>120%</code>).</li>
+                            <li>Palavras-chave absolutas: <code>xx-small</code>, <code>x-small</code>, <code>small</code>, <code>medium</code>, <code>large</code>, <code>x-large</code>, <code>xx-large</code>.</li>
+                            <li>Palavras-chave relativas: <code>larger</code>, <code>smaller</code>.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>p {
+    font-size: 16px;
+}
+
+h2 {
+    font-size: 2em; /* 2 vezes o tamanho da fonte do pai */
+}
+
+.responsive-text {
+    font-size: 1.2rem; /* 1.2 vezes o tamanho da fonte base do HTML */
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>font-weight</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>font-weight</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define a espessura (ou negrito) da fonte. Nem todas as fontes suportam todos os pesos.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li>Palavras-chave: <code>normal</code> (equivalente a 400), <code>bold</code> (equivalente a 700).</li>
+                            <li>Valores numéricos: De <code>100</code> a <code>900</code> em múltiplos de 100 (ex: <code>400</code> para normal, <code>700</code> para bold).</li>
+                            <li><code>lighter</code>, <code>bolder</code>: Relativo ao peso do elemento pai.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>strong {
+    font-weight: bold;
+}
+
+h3 {
+    font-weight: 500; /* Peso intermediário, se a fonte suportar */
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>line-height</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>line-height</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define a altura de cada linha de um texto, influenciando o espaçamento vertical entre as linhas.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>normal</code>: Valor padrão, geralmente em torno de 1.2.</li>
+                            <li><code>&lt;number&gt;</code>: Um número sem unidade (ex: <code>1.5</code>), que é um fator multiplicador do <code>font-size</code> atual do elemento. É o mais recomendado.</li>
+                            <li><code>&lt;length&gt;</code>: Um valor fixo (ex: <code>20px</code>).</li>
+                            <li><code>&lt;percentage&gt;</code>: Uma porcentagem do <code>font-size</code> do elemento.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>p {
+    line-height: 1.6; /* 1.6 vezes o tamanho da fonte */
+}
+
+h1 {
+    line-height: 1; /* Altura de linha apertada */
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>text-align</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>text-align</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Especifica o alinhamento horizontal do conteúdo em linha de um elemento de bloco ou célula de tabela.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>left</code>: Alinha o texto à esquerda (padrão em LTR).</li>
+                            <li><code>right</code>: Alinha o texto à direita.</li>
+                            <li><code>center</code>: Centraliza o texto.</li>
+                            <li><code>justify</code>: Alinha o texto para que tanto as bordas esquerda quanto direita de cada linha sejam retas (exceto a última linha).</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.article-body {
+    text-align: justify;
+}
+
+.footer-text {
+    text-align: center;
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>color</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>color</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define a cor do primeiro plano do conteúdo textual de um elemento e de quaisquer decorações de texto.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li>Nomes de cores: <code>red</code>, <code>blue</code>, <code>green</code>, <code>black</code>, <code>white</code>, etc.</li>
+                            <li>Hexadecimal: <code>#RRGGBB</code> (ex: <code>#FF0000</code> para vermelho), <code>#RGB</code> (ex: <code>#F00</code> para vermelho).</li>
+                            <li>RGB/RGBA: <code>rgb(R, G, B)</code> (ex: <code>rgb(255, 0, 0)</code>), <code>rgba(R, G, B, A)</code> (ex: <code>rgba(255, 0, 0, 0.5)</code> para vermelho com 50% de opacidade).</li>
+                            <li>HSL/HSLA: <code>hsl(H, S%, L%)</code>, <code>hsla(H, S%, L%, A)</code>.</li>
+                            <li>Palavras-chave: <code>currentColor</code> (cor atual do texto), <code>transparent</code>.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>p {
+    color: #333;
+}
+
+.highlight-text {
+    color: rgba(0, 123, 255, 0.8);
+}</code></pre>
+                    </div>
+                </details>
+            </section>
+
+            <section id="colors-backgrounds">
+                <h2>Cores e Fundos</h2>
+                <details>
+                    <summary><code>background-color</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>background-color</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define a cor de fundo de um elemento. Esta cor preenche a área de conteúdo, padding e borda do elemento.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li>Qualquer valor de cor válido (nomes, hex, RGB/RGBA, HSL/HSLA).</li>
+                            <li><code>transparent</code> (padrão).</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.header {
+    background-color: #007bff;
+    color: white;
+}
+
+.light-section {
+    background-color: #f8f8f8;
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>background-image</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>background-image</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define uma ou mais imagens de fundo para um elemento.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>url('path/to/image.jpg')</code>: Caminho para o arquivo da imagem.</li>
+                            <li><code>none</code> (padrão): Nenhuma imagem de fundo.</li>
+                            <li>Funções de gradiente: <code>linear-gradient()</code>, <code>radial-gradient()</code>, etc.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.hero-banner {
+    background-image: url('images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.gradient-background {
+    background-image: linear-gradient(to right, blue, green);
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>background-size</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>background-size</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define o tamanho das imagens de fundo.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>auto</code> (padrão).</li>
+                            <li><code>cover</code>: Redimensiona a imagem para cobrir toda a área de fundo, cortando-a se necessário.</li>
+                            <li><code>contain</code>: Redimensiona a imagem para que caiba completamente dentro da área de fundo, sem cortar, mas pode deixar espaço vazio.</li>
+                            <li><code>&lt;length&gt;</code>: Valores fixos (ex: <code>100px 50px</code> para largura e altura).</li>
+                            <li><code>&lt;percentage&gt;</code>: Valores percentuais (ex: <code>50% 100%</code>).</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.full-bg {
+    background-image: url('img.jpg');
+    background-size: cover; /* A imagem cobre todo o elemento */
+}
+
+.icon-bg {
+    background-image: url('icon.png');
+    background-size: 20px 20px; /* Tamanho fixo para o ícone */
+    background-repeat: no-repeat;
+}</code></pre>
+                    </div>
+                </details>
+            </section>
+
+            <section id="borders-outlines">
+                <h2>Bordas e Contornos</h2>
+                <details>
+                    <summary><code>border-radius</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>border-radius</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define o arredondamento dos cantos da borda de um elemento. É uma propriedade shorthand que pode arredondar todos os quatro cantos ou cantos individuais.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>&lt;length&gt;</code>: Um valor fixo (ex: <code>5px</code>, <code>1em</code>).</li>
+                            <li><code>&lt;percentage&gt;</code>: Uma porcentagem da dimensão correspondente do box (largura/altura).</li>
+                            <li>Pode aceitar 1, 2, 3 ou 4 valores (para top-left, top-right, bottom-right, bottom-left, respectivamente, se forem 4).</li>
+                            <li>Para um círculo perfeito, use <code>50%</code> em um elemento quadrado.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.button {
+    border-radius: 5px; /* Arredonda todos os 4 cantos em 5px */
+}
+
+.circle-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Transforma o elemento em um círculo/oval */
+}
+
+.card-custom-corners {
+    border-radius: 10px 0 10px 0; /* Top-left, Top-right, Bottom-right, Bottom-left */
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>outline</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>outline</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Desenha uma linha ao redor de elementos, *fora* da borda. Não ocupa espaço e não afeta o layout do documento. Usada frequentemente para indicar o foco do teclado para acessibilidade.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li>Shorthand para <code>outline-width</code>, <code>outline-style</code>, <code>outline-color</code>.</li>
+                            <li>Valores similares a <code>border</code> (width, style, color).</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>/* Remove o outline padrão ao focar (use com cuidado, pois afeta a acessibilidade) */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Adiciona um indicador visual alternativo */
+}
+
+.highlighted-element {
+    outline: 2px dashed green;
+    outline-offset: 5px; /* Espaçamento entre a borda e o outline */
+}</code></pre>
+                    </div>
+                </details>
+            </section>
+
+            <section id="visual-effects">
+                <h2>Efeitos Visuais e Transformações</h2>
+                <details>
+                    <summary><code>opacity</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>opacity</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Define o nível de opacidade de um elemento (a transparência). Afeta o elemento inteiro, incluindo seu conteúdo (texto, imagens).</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>&lt;number&gt;</code>: Um valor entre <code>0.0</code> (totalmente transparente) e <code>1.0</code> (totalmente opaco).</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.faded-image {
+    opacity: 0.7; /* 70% opacidade */
+}
+
+.hidden-element-with-opacity {
+    opacity: 0; /* Elemento invisível, mas ainda ocupa espaço */
+}
+
+.hover-effect:hover {
+    opacity: 0.8;
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>box-shadow</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>box-shadow</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Adiciona uma ou mais sombras a um elemento. As sombras podem ser internas ou externas.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>none</code> (padrão).</li>
+                            <li><code>inset</code> (opcional): Torna a sombra interna.</li>
+                            <li><code>offset-x offset-y</code>: Deslocamento horizontal e vertical da sombra (obrigatórios).</li>
+                            <li><code>blur-radius</code> (opcional): Quanto maior, mais borrada a sombra.</li>
+                            <li><code>spread-radius</code> (opcional): Expande ou encolhe a sombra.</li>
+                            <li><code>color</code>: Cor da sombra.</li>
+                            <li>Podem ser definidas múltiplas sombras separadas por vírgulas.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.card {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra simples */
+}
+
+.inset-shadow {
+    box-shadow: inset 0 0 10px red; /* Sombra interna vermelha */
+}
+
+.multiple-shadows {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2), 0 6px 20px rgba(0,0,0,0.19);
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>text-shadow</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>text-shadow</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Adiciona uma ou mais sombras ao texto de um elemento.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>none</code> (padrão).</li>
+                            <li><code>offset-x offset-y</code>: Deslocamento horizontal e vertical da sombra (obrigatórios).</li>
+                            <li><code>blur-radius</code> (opcional): Quanto maior, mais borrada a sombra.</li>
+                            <li><code>color</code>: Cor da sombra.</li>
+                            <li>Podem ser definidas múltiplas sombras separadas por vírgulas.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>h1 {
+    color: white;
+    text-shadow: 2px 2px 4px black; /* Sombra preta para o texto */
+}
+
+.neon-text {
+    color: white;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #ff00ff,
+        0 0 30px #ff00ff,
+        0 0 40px #ff00ff,
+        0 0 50px #ff00ff,
+        0 0 70px #ff00ff;
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>transform</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>transform</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Aplica transformações 2D ou 3D a um elemento, como translação (movimento), rotação, escala e inclinação. Geralmente usado com <code>transition</code> para animações suaves.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li>Funções 2D:
+                                <ul>
+                                    <li><code>translate(x, y)</code>: Move o elemento.</li>
+                                    <li><code>translateX(x)</code>, <code>translateY(y)</code>.</li>
+                                    <li><code>rotate(angle)</code>: Rotaciona o elemento.</li>
+                                    <li><code>scale(x, y)</code>: Redimensiona o elemento.</li>
+                                    <li><code>scaleX(x)</code>, <code>scaleY(y)</code>.</li>
+                                    <li><code>skew(x-angle, y-angle)</code>: Inclina o elemento.</li>
+                                </ul>
+                            </li>
+                            <li>Funções 3D: <code>translate3d()</code>, <code>rotateX()</code>, <code>rotateY()</code>, <code>rotateZ()</code>, <code>scale3d()</code>, etc.</li>
+                            <li><code>none</code> (padrão).</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.square {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    transition: transform 0.3s ease-in-out;
+}
+
+.square:hover {
+    transform: rotate(45deg) scale(1.2); /* Rotaciona e aumenta */
+}
+
+.button-press:active {
+    transform: translateY(2px); /* Efeito de botão pressionado */
+}</code></pre>
+                    </div>
+                </details>
+            </section>
+
+            <section id="transitions-animations">
+                <h2>Transições e Animações</h2>
+                <details>
+                    <summary><code>transition</code></summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>transition</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>Permite que você defina como as mudanças nas propriedades CSS devem acontecer ao longo do tempo, em vez de serem instantâneas. É uma propriedade shorthand para <code>transition-property</code>, <code>transition-duration</code>, <code>transition-timing-function</code> e <code>transition-delay</code>.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>&lt;property&gt;</code>: A propriedade CSS a ser animada (ex: <code>opacity</code>, <code>transform</code>, <code>all</code> para todas).</li>
+                            <li><code>&lt;duration&gt;</code>: Duração da transição (ex: <code>0.5s</code>, <code>500ms</code>).</li>
+                            <li><code>&lt;timing-function&gt;</code>: Curva de velocidade da transição (ex: <code>ease</code>, <code>linear</code>, <code>ease-in</code>, <code>ease-out</code>, <code>ease-in-out</code>, <code>cubic-bezier()</code>).</li>
+                            <li><code>&lt;delay&gt;</code>: Atraso antes do início da transição (ex: <code>0.2s</code>).</li>
+                            <li>Podem ser definidas múltiplas transições separadas por vírgulas.</li>
+                        </ul>
+                        <h3>Exemplos de Uso:</h3>
+<pre><code>.fade-in-out {
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Transiciona a opacidade em 1 segundo */
+}
+
+.fade-in-out.show {
+    opacity: 1;
+}
+
+.menu-item {
+    padding: 10px;
+    background-color: lightgray;
+    transition: background-color 0.3s, transform 0.2s; /* Múltiplas propriedades */
+}
+
+.menu-item:hover {
+    background-color: gray;
+    transform: translateX(5px);
+}</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><code>animation</code> (e <code>@keyframes</code>)</summary>
+                    <div>
+                        <h3>Nome da Propriedade: <span class="prop-name"><code>animation</code></span></h3>
+                        <h3>Descrição:</h3>
+                        <p>A propriedade <code>animation</code> é uma shorthand para várias subpropriedades de animação CSS. Permite que você defina uma sequência de estilos CSS que serão aplicados a um elemento ao longo do tempo. As animações são definidas com a regra <code>@keyframes</code>.</p>
+                        <h3>Valores Possíveis:</h3>
+                        <ul>
+                            <li><code>&lt;animation-name&gt;</code>: Nome da animação definida com <code>@keyframes</code>.</li>
+                            <li><code>&lt;animation-duration&gt;</code>: Duração de um ciclo da animação.</li>
+                            <li><code>&lt;animation-timing-function&gt;</code>: Curva de velocidade.</li>
+                            <li><code>&lt;animation-delay&gt;</code>: Atraso antes do início.</li>
+                            <li><code>&lt;animation-iteration-count&gt;</code>: Quantas vezes a animação deve se repetir (número ou <code>infinite</code>).</li>
+                            <li><code>&lt;animation-direction&gt;</code>: Se a animação deve tocar para frente, para trás ou alternar (<code>normal</code>, <code>reverse</code>, <code>alternate</code>, <code>alternate-reverse</code>).</li>
+                            <li><code>&lt;animation-fill-mode&gt;</code>: Estilos aplicados antes/depois da animação (<code>none</code>, <code>forwards</code>, <code>backwards</code>, <code>both</code>).</li>
+                            <li><code>&lt;animation-play-state&gt;</code>: Se a animação está rodando ou pausada (<code>running</code>, <code>paused</code>).</li>
+                        </ul>
+                        <h3>Exemplos de Uso (com <code>@keyframes</code>):</h3>
+<pre><code>/* Define a animação */
+@keyframes slidein {
+  from {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+}
+
+/* Aplica a animação a um elemento */
+.animated-box {
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  animation-name: slidein;
+  animation-duration: 3s;
+  animation-iteration-count: infinite; /* Repete indefinidamente */
+  animation-direction: alternate; /* Alterna a direção a cada ciclo */
+  animation-timing-function: ease-in-out;
+}
+
+/* Shorthand */
+.shorthand-box {
+  animation: slidein 3s ease-in-out infinite alternate;
+}</code></pre>
+                    </div>
+                </details>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Guia Abrangente de HTML e CSS. Desenvolvido com o apoio de One, FELIPE RIBEIRO</p>
+    </footer>
+</body>
+</html>

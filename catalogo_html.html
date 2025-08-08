@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Tags HTML Abrangente</title>
+    <style>
+        /* Reset básico e tipografia */
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #007bff;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+            --code-bg-color: #e9ecef;
+            --border-color: #dee2e6;
+            --header-bg-color: #007bff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #6daee3;
+                --secondary-color: #8bb3e1;
+                --text-color: #e0e0e0;
+                --bg-color: #2c2c2c;
+                --code-bg-color: #444;
+                --border-color: #555;
+                --header-bg-color: #4a4a4a;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            background-color: var(--header-bg-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        nav.sidebar {
+            flex: 0 0 250px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 20px;
+            align-self: flex-start;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+            min-width: 200px; /* Garante largura mínima para mobile */
+        }
+
+        @media (prefers-color-scheme: dark) {
+            nav.sidebar {
+                background-color: #3a3a3a;
+            }
+        }
+
+        nav.sidebar h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav.sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav.sidebar ul li {
+            margin-bottom: 5px;
+        }
+
+        nav.sidebar ul li a {
+            display: block;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav.sidebar ul li a:hover {
+            background-color: var(--code-bg-color);
+            text-decoration: none;
+        }
+
+        nav.sidebar ul ul {
+            margin-left: 15px;
+            margin-top: 5px;
+            border-left: 2px solid var(--border-color);
+            padding-left: 10px;
+        }
+
+        main.content {
+            flex: 1;
+            min-width: 300px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            main.content {
+                background-color: #3a3a3a;
+            }
+        }
+
+        h2, h3 {
+            color: var(--primary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Estilo para detalhes/sumário (collapsible sections) */
+        details {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        details[open] {
+             background-color: #ffffff; /* Fundo branco quando aberto */
+        }
+
+        @media (prefers-color-scheme: dark) {
+            details[open] {
+                background-color: #3a3a3a;
+            }
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            padding: 10px 15px;
+            background-color: var(--code-bg-color); /* Cor de fundo para o sumário */
+            border-bottom: 1px solid var(--border-color);
+            border-radius: 5px 5px 0 0; /* Apenas cantos superiores */
+            color: var(--primary-color);
+        }
+
+        details[open] summary {
+            border-radius: 5px 5px 0 0; /* Remove border-bottom quando aberto */
+        }
+
+        summary:hover {
+            background-color: #dde1e5;
+            text-decoration: underline;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            summary:hover {
+                background-color: #555;
+            }
+        }
+
+        details div {
+            padding: 15px;
+            /* border-top: 1px solid var(--border-color); */
+        }
+
+        details div ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        details div ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Estilo para blocos de código */
+        pre {
+            background-color: var(--code-bg-color);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #2a2a2a;
+        }
+        @media (prefers-color-scheme: dark) {
+            pre {
+                color: #e0e0e0;
+            }
+        }
+
+        code {
+            background-color: var(--code-bg-color);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #d63384; /* Cor para código inline */
+        }
+        @media (prefers-color-scheme: dark) {
+            code {
+                color: #ff8c00;
+            }
+        }
+        .tag-format {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        /* Responsividade geral */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin: 10px auto;
+                gap: 10px;
+            }
+
+            nav.sidebar {
+                position: static;
+                max-height: none;
+                width: 100%;
+                order: -1;
+                margin-bottom: 10px;
+            }
+
+            nav.sidebar ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav.sidebar ul li {
+                margin: 0 5px 10px 5px;
+            }
+
+            nav.sidebar ul ul {
+                display: none; /* Oculta sub-níveis de navegação em mobile */
+            }
+
+            main.content {
+                padding: 20px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: var(--header-bg-color);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px; /* Espaçamento entre os botões */
+            flex-wrap: wrap; /* Permite que os botões quebrem linha em telas pequenas */
+            justify-content: center;
+        }
+
+        .header-buttons .btn {
+            background-color: #fff; /* Fundo branco para os botões */
+            color: var(--primary-color); /* Texto azul primário */
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            white-space: nowrap; /* Impede que o texto do botão quebre linha */
+        }
+
+        .header-buttons .btn:hover {
+            background-color: #e9ecef; /* Um pouco mais escuro no hover */
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Catálogo de Tags HTML Abrangente</h1>
+        <p>Um guia interativo com tags HTML, suas descrições e exemplos.</p>
+   
+      <div class="header-buttons">
+            <a href="https://www.uol.com.br" target="_blank" class="btn">PRINCIPAL</a>
+            <a href="https://www.google.com" target="_blank" class="btn">HTML</a>
+            <a href="https://www.caixa.gov.br" target="_blank" class="btn">CSS</a>
+        </div>
+   </header>
+    <div class="container">
+        <nav class="sidebar">
+            <h2>Categorias de Tags</h2>
+            <ul>
+                <li><a href="#document-structure">Estrutura do Documento</a></li>
+                <li><a href="#metadata">Metadados</a></li>
+                <li><a href="#text-content">Conteúdo de Texto</a></li>
+                <li><a href="#lists">Listas</a></li>
+                <li><a href="#links-and-media">Links e Mídia</a></li>
+                <li><a href="#tables">Tabelas</a></li>
+                <li><a href="#forms">Formulários</a></li>
+                <li><a href="#interactive">Interativas e Scripting</a></li>
+                <li><a href="#semantic-sectioning">Seccionamento Semântico HTML5</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <p>Este documento apresenta uma vasta coleção de tags HTML, incluindo as mais recentes do HTML5. Clique em cada item para expandir e ver detalhes como a tag de abertura/fechamento, descrição e exemplos de uso.</p>
+            <p><strong>Nota:</strong> Esta é uma seleção representativa e abrangente. Para uma lista *exaustiva* e sempre atualizada, consulte as referências oficiais como o <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element" target="_blank">MDN Web Docs</a>.</p>
+
+            <section id="document-structure">
+                <h2>Estrutura do Documento</h2>
+                <details>
+                    <summary>&lt;html&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;html&gt;...&lt;/html&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;html&gt;</code> representa a raiz de um documento HTML ou XHTML. Todos os outros elementos devem ser descendentes deste elemento.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;title&gt;Minha Página&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Olá, Mundo!&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;head&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;head&gt;...&lt;/head&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;head&gt;</code> contém metadados sobre o documento, como seu título, links para folhas de estilo, scripts e outras informações que não são visíveis no corpo da página.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Título da Página&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+    &lt;script src="script.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;body&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;body&gt;...&lt;/body&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;body&gt;</code> representa o conteúdo principal de um documento HTML. Tudo o que é visível para o usuário (texto, imagens, vídeos, etc.) é colocado dentro desta tag.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Bem-vindo!&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;p&gt;Este é o conteúdo principal da página.&lt;/p&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2023 Minha Empresa&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+                    </div>
+                </details>
+            </section>
+
+            <section id="metadata">
+                <h2>Metadados</h2>
+                <details>
+                    <summary>&lt;title&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;title&gt;...&lt;/title&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;title&gt;</code> define o título do documento, que é exibido na barra de título do navegador ou na aba da página. É crucial para SEO e acessibilidade.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;head&gt;
+    &lt;title&gt;Minha Home Page Incrível&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;meta&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;meta&gt;</span> (self-closing)</h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;meta&gt;</code> fornece metadados sobre o documento HTML. Não tem tag de fechamento e é usado para especificar o conjunto de caracteres, a viewport, descrição da página, palavras-chave, etc.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="description" content="Uma página sobre tags HTML."&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;/head&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;link&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;link&gt;</span> (self-closing)</h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;link&gt;</code> especifica a relação entre o documento atual e um recurso externo, como uma folha de estilo ou um ícone.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;head&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+    &lt;link rel="icon" href="favicon.ico" type="image/x-icon"&gt;
+&lt;/head&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;style&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;style&gt;...&lt;/style&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;style&gt;</code> é usado para incorporar folhas de estilo CSS diretamente no documento HTML.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;head&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        h1 {
+            color: blue;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;script&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;script&gt;...&lt;/script&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;script&gt;</code> é usado para incorporar ou referenciar scripts executáveis, geralmente JavaScript. Pode ser colocado no <code>&lt;head&gt;</code> ou no <code>&lt;body&gt;</code>.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;body&gt;
+    &lt;p id="demo"&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        document.getElementById("demo").innerHTML = "Hello JavaScript!";
+    &lt;/script&gt;
+
+    &lt;script src="meu-script.js" defer&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+                    </div>
+                </details>
+            </section>
+
+            <section id="text-content">
+                <h2>Conteúdo de Texto</h2>
+                <details>
+                    <summary>&lt;h1&gt; a &lt;h6&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;h1&gt;...&lt;/h1&gt;</span>, <span class="tag-format">&lt;h2&gt;...&lt;/h2&gt;</span>, etc.</h3>
+                        <h3>Descrição:</h3>
+                        <p>Os elementos <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code> representam seis níveis de títulos de seção. <code>&lt;h1&gt;</code> é o mais importante e <code>&lt;h6&gt;</code> é o menos importante. Essenciais para a estrutura semântica de um documento.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;h1&gt;Título Principal da Página&lt;/h1&gt;
+&lt;h2&gt;Subtítulo da Seção&lt;/h2&gt;
+&lt;h3&gt;Título de um Artigo&lt;/h3&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;p&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;p&gt;...&lt;/p&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;p&gt;</code> representa um parágrafo de texto. É a tag mais comum para blocos de texto em HTML.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;Este é o primeiro parágrafo do meu texto. Ele contém informações importantes.&lt;/p&gt;
+&lt;p&gt;Este é o segundo parágrafo. Cada parágrafo é um bloco separado.&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;a&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;a&gt;...&lt;/a&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;a&gt;</code> (âncora) cria um hyperlink para outros documentos, partes do mesmo documento ou para um endereço de e-mail. O atributo principal é <code>href</code>.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;Visite o &lt;a href="https://www.w3.org/" target="_blank"&gt;site do W3C&lt;/a&gt; para mais informações.&lt;/p&gt;
+&lt;p&gt;&lt;a href="#top"&gt;Voltar ao topo&lt;/a&gt;&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;br&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;br&gt;</span> (self-closing)</h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;br&gt;</code> produz uma quebra de linha. É útil quando uma quebra de linha é semanticamente importante, como em endereços ou poesia.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;Rua Exemplo, 123&lt;br&gt;
+Cidade, Estado&lt;br&gt;
+CEP 12345-678&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;hr&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;hr&gt;</span> (self-closing)</h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;hr&gt;</code> representa uma quebra temática entre parágrafos de conteúdo (por exemplo, uma mudança de cena em uma história ou uma mudança de tópico). É renderizado como uma linha horizontal por padrão.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;Fim da introdução.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Início do conteúdo principal.&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;strong&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;strong&gt;...&lt;/strong&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;strong&gt;</code> indica que seu conteúdo tem grande importância, seriedade ou urgência. Navegadores geralmente o renderizam em negrito.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;&lt;strong&gt;Atenção:&lt;/strong&gt; Esta mensagem é crucial.&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;em&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;em&gt;...&lt;/em&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;em&gt;</code> (ênfase) marca o texto que deve ser enfatizado. Geralmente é renderizado em itálico pelos navegadores.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;Eu &lt;em&gt;realmente&lt;/em&gt; gosto de HTML.&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;small&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;small&gt;...&lt;/small&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;small&gt;</code> representa comentários laterais e pequenas impressões, como direitos autorais, avisos legais ou texto de rodapé. Geralmente renderizado com uma fonte menor.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;&lt;small&gt;&copy; 2023 Todos os direitos reservados.&lt;/small&gt;&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;code&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;code&gt;...&lt;/code&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;code&gt;</code> exibe um fragmento de código de programação. Conteúdo é exibido em uma fonte monoespaçada por padrão.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;A função &lt;code&gt;console.log()&lt;/code&gt; é usada para depuração.&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;pre&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;pre&gt;...&lt;/pre&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;pre&gt;</code> representa texto pré-formatado. O texto dentro dele é exibido em uma fonte monoespaçada e mantém espaços em branco e quebras de linha exatamente como digitados.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;pre&gt;
+function saudacao() {
+    console.log("Olá, mundo!");
+}
+saudacao();
+&lt;/pre&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;blockquote&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;blockquote&gt;...&lt;/blockquote&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;blockquote&gt;</code> indica que o texto contido é uma citação estendida de outra fonte. Geralmente é indentado pelos navegadores.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;blockquote cite="https://www.example.com/quote"&gt;
+    &lt;p&gt;A única forma de fazer um grande trabalho é amar o que você faz.&lt;/p&gt;
+    &lt;footer&gt;— Steve Jobs&lt;/footer&gt;
+&lt;/blockquote&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;q&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;q&gt;...&lt;/q&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;q&gt;</code> representa uma citação curta inline. Navegadores geralmente adicionam aspas automaticamente.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;Ele disse &lt;q cite="https://www.example.com/speech"&gt;Eu voltarei amanhã.&lt;/q&gt; antes de sair.&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;abbr&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;abbr&gt;...&lt;/abbr&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;abbr&gt;</code> representa uma abreviação ou um acrônimo. O atributo <code>title</code> pode ser usado para fornecer a expansão completa.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;O &lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; é a linguagem padrão da web.&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;address&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;address&gt;...&lt;/address&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;address&gt;</code> indica informações de contato para seu <code>&lt;article&gt;</code> ou para todo o documento.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;address&gt;
+  Escrito por &lt;a href="mailto:webmaster@example.com"&gt;John Doe&lt;/a&gt;.&lt;br&gt;
+  Visite-nos em:&lt;br&gt;
+  Exemplo.com&lt;br&gt;
+  Rua Exemplo, 123&lt;br&gt;
+  Brasil
+&lt;/address&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;cite&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;cite&gt;...&lt;/cite&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;cite&gt;</code> representa o título de um trabalho criativo (por exemplo, um livro, uma peça, uma música, um filme, uma pintura, uma escultura, etc.). Geralmente renderizado em itálico.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;Meu livro favorito é &lt;cite&gt;O Pequeno Príncipe&lt;/cite&gt;.&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;del&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;del&gt;...&lt;/del&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;del&gt;</code> representa um intervalo de texto que foi excluído de um documento. Geralmente é renderizado com um risco no meio (tachado).</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;Preço: &lt;del&gt;R\$ 100,00&lt;/del&gt; R\$ 75,00&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;ins&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;ins&gt;...&lt;/ins&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;ins&gt;</code> representa um intervalo de texto que foi adicionado a um documento. Geralmente é renderizado sublinhado.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;Status: &lt;del&gt;Pendente&lt;/del&gt; &lt;ins&gt;Concluído&lt;/ins&gt;&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;mark&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;mark&gt;...&lt;/mark&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;mark&gt;</code> representa o texto que é marcado ou destacado por sua relevância em um determinado contexto. Geralmente é renderizado com um fundo amarelo.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;Pesquise por &lt;mark&gt;HTML5&lt;/mark&gt; para aprender mais.&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;sub&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;sub&gt;...&lt;/sub&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;sub&gt;</code> exibe seu conteúdo como subscrito (abaixo da linha base do texto) e com uma fonte menor.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;A fórmula da água é H&lt;sub&gt;2&lt;/sub&gt;O.&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;sup&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;sup&gt;...&lt;/sup&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;sup&gt;</code> exibe seu conteúdo como sobrescrito (acima da linha base do texto) e com uma fonte menor.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;p&gt;2&lt;sup&gt;3&lt;/sup&gt; é igual a 8.&lt;/p&gt;</code></pre>
+                    </div>
+                </details>
+            </section>
+
+            <section id="lists">
+                <h2>Listas</h2>
+                <details>
+                    <summary>&lt;ul&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;ul&gt;...&lt;/ul&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;ul&gt;</code> representa uma lista não ordenada de itens. Os itens são geralmente marcados com bullet points.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;ul&gt;
+    &lt;li&gt;Maçãs&lt;/li&gt;
+    &lt;li&gt;Bananas&lt;/li&gt;
+    &lt;li&gt;Laranjas&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;ol&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;ol&gt;...&lt;/ol&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;ol&gt;</code> representa uma lista ordenada de itens. Os itens são geralmente numerados.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;ol&gt;
+    &lt;li&gt;Primeiro passo&lt;/li&gt;
+    &lt;li&gt;Segundo passo&lt;/li&gt;
+    &lt;li&gt;Terceiro passo&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;li&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;li&gt;...&lt;/li&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;li&gt;</code> representa um item de lista dentro de uma lista ordenada (<code>&lt;ol&gt;</code>) ou não ordenada (<code>&lt;ul&gt;</code>).</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;ul&gt;
+    &lt;li&gt;Item de Lista&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;dl&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;dl&gt;...&lt;/dl&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;dl&gt;</code> (description list) representa uma lista de descrições, onde cada termo (<code>&lt;dt&gt;</code>) pode ter uma ou mais descrições (<code>&lt;dd&gt;</code>).</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;
+    &lt;dd&gt;Linguagem de Marcação de Hipertexto.&lt;/dd&gt;
+    &lt;dt&gt;CSS&lt;/dt&gt;
+    &lt;dd&gt;Folhas de Estilo em Cascata.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;dt&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;dt&gt;...&lt;/dt&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;dt&gt;</code> (description term) representa um termo em uma lista de descrições (<code>&lt;dl&gt;</code>).</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;dl&gt;
+    &lt;dt&gt;Termo&lt;/dt&gt;
+    &lt;dd&gt;Descrição.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;dd&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;dd&gt;...&lt;/dd&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;dd&gt;</code> (description details) representa a descrição ou definição de um termo em uma lista de descrições (<code>&lt;dl&gt;</code>).</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;dl&gt;
+    &lt;dt&gt;Termo&lt;/dt&gt;
+    &lt;dd&gt;Descrição.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                    </div>
+                </details>
+            </section>
+
+            <section id="links-and-media">
+                <h2>Links e Mídia</h2>
+                <details>
+                    <summary>&lt;img&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;img&gt;</span> (self-closing)</h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;img&gt;</code> incorpora uma imagem no documento. Os atributos <code>src</code> e <code>alt</code> são obrigatórios.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;img src="logo.png" alt="Logo da empresa" width="150" height="50"&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;picture&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;picture&gt;...&lt;/picture&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;picture&gt;</code> contém zero ou mais elementos <code>&lt;source&gt;</code> e um elemento <code>&lt;img&gt;</code> para oferecer versões diferentes de uma imagem para diferentes cenários de dispositivo/resolução.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;picture&gt;
+    &lt;source srcset="large.webp" media="(min-width: 800px)"&gt;
+    &lt;source srcset="medium.webp" media="(min-width: 400px)"&gt;
+    &lt;img src="small.jpg" alt="Exemplo de imagem responsiva"&gt;
+&lt;/picture&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;source&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;source&gt;</span> (self-closing)</h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;source&gt;</code> especifica múltiplos recursos de mídia para <code>&lt;picture&gt;</code>, <code>&lt;audio&gt;</code> e <code>&lt;video&gt;</code>, permitindo que o navegador escolha o formato mais adequado.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;video controls&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+    &lt;source src="video.webm" type="video/webm"&gt;
+    Seu navegador não suporta a tag de vídeo.
+&lt;/video&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;audio&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;audio&gt;...&lt;/audio&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;audio&gt;</code> é usado para incorporar conteúdo de áudio em um documento HTML. Atributos como <code>controls</code>, <code>autoplay</code> e <code>loop</code> podem ser usados.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;audio controls autoplay loop&gt;
+    &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+    &lt;source src="audio.ogg" type="audio/ogg"&gt;
+    Seu navegador não suporta a tag de áudio.
+&lt;/audio&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;video&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;video&gt;...&lt;/video&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;video&gt;</code> é usado para incorporar conteúdo de vídeo em um documento HTML. Atributos como <code>controls</code>, <code>autoplay</code>, <code>loop</code>, <code>width</code>, <code>height</code> e <code>poster</code> são comuns.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;video controls width="320" height="240" poster="thumb.jpg"&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+    Seu navegador não suporta a tag de vídeo.
+&lt;/video&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;iframe&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;iframe&gt;...&lt;/iframe&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;iframe&gt;</code> é usado para incorporar outro documento HTML dentro do documento atual (em um "quadro" embutido). É frequentemente usado para incorporar mapas, vídeos do YouTube, etc.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;iframe src="https://www.example.com" width="600" height="400" allowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+                    </div>
+                </details>
+            </section>
+
+            <section id="tables">
+                <h2>Tabelas</h2>
+                <details>
+                    <summary>&lt;table&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;table&gt;...&lt;/table&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;table&gt;</code> representa dados tabulares, ou seja, informações dispostas em um formato de tabela bidimensional com linhas e colunas.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Nome&lt;/th&gt;
+        &lt;th&gt;Idade&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;João&lt;/td&gt;
+        &lt;td&gt;30&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;caption&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;caption&gt;...&lt;/caption&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;caption&gt;</code> especifica o título ou legenda de uma tabela. Deve ser o primeiro elemento filho de <code>&lt;table&gt;</code>.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;table&gt;
+    &lt;caption&gt;Dados de Vendas Mensais&lt;/caption&gt;
+    &lt;tr&gt;...&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;thead&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;thead&gt;...&lt;/thead&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;thead&gt;</code> agrupa o conteúdo do cabeçalho de uma tabela, contendo as linhas que definem os títulos das colunas.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Produto&lt;/th&gt;
+            &lt;th&gt;Preço&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;...&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;tbody&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;tbody&gt;...&lt;/tbody&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;tbody&gt;</code> agrupa o conteúdo do corpo de uma tabela, contendo as linhas de dados.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;table&gt;
+    &lt;thead&gt;...&lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Monitor&lt;/td&gt;
+            &lt;td&gt;R\$ 800,00&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;tfoot&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;tfoot&gt;...&lt;/tfoot&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;tfoot&gt;</code> agrupa o conteúdo do rodapé de uma tabela, tipicamente usado para totais ou resumos.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;table&gt;
+    &lt;thead&gt;...&lt;/thead&gt;
+    &lt;tbody&gt;...&lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Total&lt;/td&gt;
+            &lt;td&gt;R\$ 1500,00&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;tr&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;tr&gt;...&lt;/tr&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;tr&gt;</code> (table row) define uma linha de células em uma tabela.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Célula 1&lt;/td&gt;
+        &lt;td&gt;Célula 2&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;th&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;th&gt;...&lt;/th&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;th&gt;</code> (table header) define uma célula de cabeçalho em uma tabela. Serve para identificar as colunas ou linhas.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;tr&gt;
+    &lt;th&gt;Nome&lt;/th&gt;
+    &lt;th&gt;Email&lt;/th&gt;
+&lt;/tr&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;td&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;td&gt;...&lt;/td&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;td&gt;</code> (table data) define uma célula de dados padrão em uma tabela.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;tr&gt;
+    &lt;td&gt;Maria&lt;/td&gt;
+    &lt;td&gt;maria@example.com&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+                    </div>
+                </details>
+            </section>
+
+            <section id="forms">
+                <h2>Formulários</h2>
+                <details>
+                    <summary>&lt;form&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;form&gt;...&lt;/form&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;form&gt;</code> representa uma seção do documento que contém controles interativos para enviar informações a um servidor web. Atributos como <code>action</code> e <code>method</code> são essenciais.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;form action="/submit_data" method="post"&gt;
+    &lt;label for="name"&gt;Nome:&lt;/label&gt;
+    &lt;input type="text" id="name" name="user_name"&gt;
+    &lt;input type="submit" value="Enviar"&gt;
+&lt;/form&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;input&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;input&gt;</span> (self-closing)</h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;input&gt;</code> é usado para criar controles de formulário interativos para que os usuários insiram dados. O atributo <code>type</code> define o tipo de controle (text, password, checkbox, radio, submit, etc.).</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;input type="text" name="username" placeholder="Nome de usuário" required&gt;
+&lt;input type="password" name="password"&gt;
+&lt;input type="checkbox" name="remember_me" id="remember"&gt;
+&lt;label for="remember"&gt;Lembrar-me&lt;/label&gt;
+&lt;input type="submit" value="Login"&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;label&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;label&gt;...&lt;/label&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;label&gt;</code> representa uma legenda para um item em uma interface de usuário. É associado a um controle de formulário pelo atributo <code>for</code>, que deve corresponder ao <code>id</code> do controle.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;label for="email"&gt;Endereço de Email:&lt;/label&gt;
+&lt;input type="email" id="email" name="user_email"&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;button&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;button&gt;...&lt;/button&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;button&gt;</code> representa um botão clicável. Ele pode ser usado dentro de um formulário ou em qualquer outro lugar do documento.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;button type="submit"&gt;Enviar Formulário&lt;/button&gt;
+&lt;button type="button" onclick="alert('Olá!');"&gt;Clique-me&lt;/button&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;textarea&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;textarea&gt;...&lt;/textarea&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;textarea&gt;</code> representa um controle de edição de texto multi-linha. Atributos como <code>rows</code> e <code>cols</code> controlam o tamanho inicial.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;label for="mensagem"&gt;Sua Mensagem:&lt;/label&gt;
+&lt;textarea id="mensagem" name="user_message" rows="5" cols="30" placeholder="Digite aqui..."&gt;&lt;/textarea&gt;</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>&lt;select&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;select&gt;...&lt;/select&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;select&gt;</code> representa um controle que fornece um menu de opções (<code>&lt;option&gt;</code>) para o usuário escolher.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;label for="fruta"&gt;Escolha uma fruta:&lt;/label&gt;
+&lt;select id="fruta" name="selected_fruit"&gt;
+    &lt;option value="maca"&gt;Maçã&lt;/option&gt;
+    &lt;option value="banana"&gt;Banana&lt;/option&gt;
+    &lt;option value="laranja" selected&gt;Laranja&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                    </div>
+                </details>
+<details>
+                                   <summary>&lt;option&gt;</summary>
+                    <div>
+                        <h3>Formato: <span class="tag-format">&lt;option&gt;...&lt;/option&gt;</span></h3>
+                        <h3>Descrição:</h3>
+                        <p>O elemento <code>&lt;option&gt;</code> é usado para definir uma opção dentro de um elemento <code>&lt;select&gt;</code>, <code>&lt;optgroup&gt;</code> ou <code>&lt;datalist&gt;</code>.</p>
+                        <h3>Exemplo de Uso:</h3>
+<pre><code>&lt;select&gt;
+    &lt;option value="carro"&gt;Carro&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                    </div>
+                    </details>
+ 
